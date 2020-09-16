@@ -1,0 +1,50 @@
+.cates-wrap {
+  height: 100%;
+}
+
+.cates-container {
+  display: flex;
+  height: calc(100vh - 90rpx);
+}
+
+.left-menu {
+  width: 200rpx;
+  border: 1rpx solid #ddd;
+  text-align: center;
+}
+
+.left-menu view {
+  height: 80rx;
+  line-height: 80rpx;
+}
+.active{
+  color: var(--themeColor);
+  border-left: 1rpx solid #eb4450;
+}
+.right-menu {
+  flex: 1;
+  text-align: center;
+}
+
+.right-menu .cate-title {
+  margin: 20rpx auto;
+}
+
+.right-menu .cate-block {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.right-menu .cate-item {
+  width: 33.33%;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.right-menu .cate-item image {
+  width: 50%;
+  height: 38px;
+  align-self: center;
+}
