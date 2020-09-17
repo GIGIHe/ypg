@@ -1,2 +1,33 @@
-<!--pages/goods_list/index.wxml-->
-<text>pages/goods_list/index.wxml</text>
+<view class="goods-list">
+  <!-- 搜索框 -->
+  <search-input />
+  <!-- 搜索框 -->
+  <!-- tabs -->
+  <tabs tabs="{{tabs}}" bindchangeContent="handleEvent">
+    <!-- 内容 -->
+    <block wx:if="{{tabs[0].isActive}}">
+      <navigator wx:for="{{listData}}" wx:key="goods_id" class="tabs1" url="/pages/goods_detail/main?goods_id={{item.goods_id}}">
+        <view class="img-box">
+          <image src="{{item.goods_small_logo?item.goods_small_logo:'https://ww1.sinaimg.cn/large/007rAy9hgy1g24by9t530j30i20i2glm.jpg'}}" mode="widthFix"></image>
+        </view>
+        <view class="desc-box">
+          <text class="desc">
+            {{item.goods_name}}
+          </text>
+          <text class="price">
+            ￥{{item.goods_price}}
+          </text>
+        </view>
+      </navigator>
+      <view class="no-more" hidden="{{!isMore}}">----没有更多数据----</view>
+    </block>
+    <block wx:if="{{tabs[1].isActive}}">
+      2
+    </block>
+    <block wx:if="{{tabs[2].isActive}}">
+      3
+    </block>
+    <!-- 内容 -->
+  </tabs>
+  <!-- tabs -->
+</view>

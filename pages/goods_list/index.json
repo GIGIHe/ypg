@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "search-input":"../../components/searchInput/index",
+    "tabs":"../../components/tabs/index"
+  }
 }

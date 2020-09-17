@@ -6,70 +6,73 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    tabs:[
+      {
+        name:"综合",
+       isActive:true
+      },
+      {
+        name:"销量",
+        isActive:false
+      },
+      {
+        name:"价格",
+        isActive:false
+      }
+    ],
+    listData:[],
+    isMore:false
   },
-
+  QueryParams:{
+    query:"",
+    cid:'',
+    pagenum:1,
+    pagesize:10
+  },
+  total:1,
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options)
-    let cat_id = options.cat_id
-    this.getInitData(cat_id)
+   this.QueryParams.cid = options.cat_id
+    this.getInitData()
   },
-  getInitData(cat_id) {
-     request({url:"/goods/search",cid:cat_id,pagenum:1,pagesize:10}).then(res=>{
+  // 商品列表
+  getInitData() {
+     request({url:"/goods/search",data:this.QueryParams}).then(res=>{
+       let datas = this.data.listData
+       this.total = Math.ceil(res.message.total/this.QueryParams.pagesize)
        this.setData({
-         listData:res.message
+         listData:datas.concat(res.message.goods),
        })
      })
   },
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  handleEvent(e){
+    console.log(e.detail)
+    let index = e.detail
+    let {tabs} = this.data
+    tabs.forEach((v,inx)=>index===inx?v.isActive=true:v.isActive=false)
+    this.setData({
+      tabs
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
+    /**
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
+    // 加载更多商品列表
+    // 和之前数据连接 concat
+    this.QueryParams.pagenum++
+    if(this.total>=this.QueryParams.pagenum){
+      this.getInitData()
+    }else{
+      wx.showToast({
+        title: '没有更多数据'
+      })
+    }
+},
 
-  },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
 
-  }
+
 })

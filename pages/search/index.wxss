@@ -1,1 +1,22 @@
-/* pages/search/index.wxss */
+.search-wrap {
+  margin-top: 20rpx;
+  padding: 0 20rpx;
+  display: flex;
+  height: 60rpx;
+  align-items: center;
+}
+
+.search-wrap input {
+  flex: 1;
+  padding-left: 30rpx;
+  border-radius: 8rpx;
+  border: 1px solid #e3e3e3;
+  height: 100%;
+}
+.search-wrap .cancel-btn {
+  width: 110rpx;
+  background: #fff;
+  border-radius: 4rpx;
+  height: 100%;
+  margin: 0 16rpx;
+}

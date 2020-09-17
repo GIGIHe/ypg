@@ -1,1 +1,29 @@
-/* pages/goods_list/index.wxss */
+.tabs1{
+  display: flex;
+  border-bottom: 2rpx solid #dddddd;
+}
+.tabs1 .img-box{
+   flex: 2;
+   text-align: center;
+}
+.tabs1 .img-box image{
+  width: 70%;
+}
+.tabs1 .desc-box{
+  flex: 3;
+ display: flex;
+ flex-direction: column;
+ justify-content: space-between;
+ padding: 20rpx 40rpx;
+}
+.tabs1 .desc-box text{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; 
+  -webkit-box-orient: vertical;
+}
+.no-more{
+  text-align: center;
+  padding: 20rpx 0;
+}

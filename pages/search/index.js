@@ -6,22 +6,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    isFocus: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-this.getData()
-  },
-  getData(){
-    request({url:"/categories"}).then(res=>{
-      if(res.status===200){
-       this.setData({
-        cates:res.message
-       })
-      }
-    })
+  onLoad: function (options) {},
+  changeValue(e) {
+    let query = e.detail.value
+    console.log(query)
   }
 })
